@@ -14,13 +14,15 @@ namespace FirstProject
     {
         [FunctionName("HalloWorld")]
         public static async Task<IActionResult> Run(
-            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "halloworld")] HttpRequest req,
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "halloworld/{name}")] HttpRequest req, string name,
             ILogger log)
         {
-            return new OkObjectResult("Hallo world");
+            
+            string resultaat = $"Hallo world,{name}";
+            return new OkObjectResult(resultaat);
             //log.LogInformation("C# HTTP trigger function processed a request.");
 
-            //string name = req.Query["name"];
+            
 
             //string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
             //dynamic data = JsonConvert.DeserializeObject(requestBody);
